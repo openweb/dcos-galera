@@ -7,4 +7,4 @@ if [ -n "$1" ]; then
 	version=$1
 fi
 
-docker build --tag unterstein/dcos-galera:$version .
+docker build --tag idstudios/dcos-galera:$version .

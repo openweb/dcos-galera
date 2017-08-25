@@ -6,5 +6,6 @@ RUN apt-get update && \
 
 COPY galera.cnf /etc/mysql/conf.d/galera.cnf
 COPY dcos-galera.sh /dcos-galera.sh
+COPY drupaldb_backup.sql /drupaldb_backup.sql
 
 ENTRYPOINT ["/dcos-galera.sh"]

@@ -7,4 +7,4 @@ if [ -n "$1" ]; then
 	version=$1
 fi
 
-docker push unterstein/dcos-galera:$version
+docker push idstudios/dcos-galera:$version

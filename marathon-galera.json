@@ -1,7 +1,7 @@
 {  
   "id":"galera",
   "cpus":2,
-  "mem":2000,
+  "mem":1500,
   "instances":3,
   "disk": 2000,
   "container":{
@@ -24,6 +24,16 @@
     "docker":{  
       "image":"unterstein/dcos-galera:10.1.20",
       "network":"USER",
+      "portMappings": [
+        {
+          "containerPort": 3306,
+          "servicePort": 10000,
+          "name": "galera",
+          "labels": {
+            "VIP_0": "/galera:3306"
+          }
+        }
+      ],      
       "forcePullImage":true
     }
   },

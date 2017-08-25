@@ -9,7 +9,7 @@ echo "waiting 5 seconds for dns"
 sleep 5
 
 # try until DNS is ready
-url="galera.marathon.containerip.dcos.thisdcos.directory"
+url="mariadb-galera.marathon.containerip.dcos.thisdcos.directory"
 members=""
 digs=""
 
@@ -30,6 +30,14 @@ done
 echo "wsrep_node_address=\"$ip\"" >> /etc/mysql/conf.d/galera.cnf
 echo "wsrep_cluster_address=\"gcomm://$members\"" >> /etc/mysql/conf.d/galera.cnf
 
+echo "wsrep_node_address=\"$ip\""
+echo "wsrep_cluster_address=\"gcomm://$members\""
+
+dig_status=`echo $digs | sed -e "s/\.//g"`
+ip_status=`echo $ip | sed -e "s/\.//g"`
+
+echo $dig_status
+echo $ip_status
 
 # only the first one is allowed to start a new cluster
 if [[ `echo $digs | sed -e "s/\.//g"` == `echo $ip | sed -e "s/\.//g"`* ]]; then
